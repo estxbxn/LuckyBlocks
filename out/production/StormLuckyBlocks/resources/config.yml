@@ -1,0 +1,55 @@
+behaviors:
+  rare:
+    item:
+      type: TEXTURE
+      value: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYWM0OTcwZWE5MWFiMDZlY2U1OWQ0NWZjZTc2MDRkMjU1NDMxZjJlMDNhNzM3YjIyNjA4MmM0Y2NlMWFjYTFjNCJ9fX0="
+      name: '&bRare &eLucky Block'
+      lore:
+        - '&6My Lucky Block'
+      enchantments:
+        - DAMAGE_ALL:1
+      flags:
+        - HIDE_ATTRIBUTES
+    block:
+      type: HDB
+      hdb-id: 2424
+    rewards:
+      one:
+        name: '&aItem 1'
+        material: CARROT_ITEM
+        data: -1
+        lore:
+          - '&aLore 1'
+          - '&bLore 2'
+          - '&cLore 3'
+        enchantments:
+          - DAMAGE_ALL:1
+        flags:
+          - HIDE_ATTRIBUTES
+        chance: 33
+      two:
+        name: '&bItem 2'
+        material: CARROT_ITEM
+        data: -1
+        lore:
+          - '&aLore 1'
+          - '&bLore 2'
+          - '&cLore 3'
+        enchantments:
+          - DAMAGE_ALL:2
+        flags:
+          - HIDE_ATTRIBUTES
+        chance: 33
+      three:
+        name: '&cItem 3'
+        material: CARROT_ITEM
+        data: -1
+        lore:
+          - '&aLore 1'
+          - '&bLore 2'
+          - '&cLore 3'
+        enchantments:
+          - DAMAGE_ALL:3
+        flags:
+          - HIDE_ATTRIBUTES
+        chance: 33
