@@ -5,11 +5,6 @@ import fr.zebulon.stormlb.api.behaviors.IBehavior;
 public interface IBehaviorManager {
 
     /**
-     * Load behaviors.
-     */
-    void loadBehaviors();
-
-    /**
      * Save behaviors.
      */
     void saveBehaviors();
