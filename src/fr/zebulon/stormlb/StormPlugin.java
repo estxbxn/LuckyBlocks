@@ -34,9 +34,6 @@ public class StormPlugin extends JavaPlugin implements IStormPlugin {
         this.behaviorListener = new BehaviorListener(this);
         behaviorListener.registerListener();
 
-        // Load behaviors
-        behaviorManager.loadBehaviors();
-
         // Commands
         new StormLBCommand(this);
 
