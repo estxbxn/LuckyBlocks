@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="arcaniax.HeadDatabase.API" type="repository">
+    <properties maven-id="com.arcaniax:HeadDatabase-API:1.3.1" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libs/HeadDatabase-API-1.3.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
