@@ -14,7 +14,6 @@ import fr.zebulon.stormlb.internal.blocks.types.CustomHeadTextureBlock;
 import fr.zebulon.stormlb.internal.items.CustomItemImpl;
 import fr.zebulon.stormlb.internal.items.types.CustomHeadItem;
 import fr.zebulon.stormlb.internal.items.types.CustomHeadTextureItem;
-import fr.zebulon.stormlb.internal.items.types.CustomRewardItem;
 import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.InvalidConfigurationException;
@@ -104,16 +103,7 @@ public class Configuration implements IConfiguration {
 
                         IReward reward = new Reward(
                                 rewardId,
-                                new CustomRewardItem(
-                                        behaviorId,
-                                        rewardsSection.getString("name"),
-                                        Material.valueOf(rewardsSection.getString("material")),
-                                        (byte) rewardsSection.getInt("data"),
-                                        rewardsSection.getStringList("lore"),
-                                        fromTypeEnchantments(rewardsSection.getStringList("enchantments")),
-                                        fromTypeFlags(rewardsSection.getStringList("flags")),
-                                        rewardsSection.getInt("chance")
-                                ),
+                                rewardsSection.getInt("chance"),
                                 rewardsSection.getStringList("commands")
                         );
 
@@ -166,8 +156,8 @@ public class Configuration implements IConfiguration {
     @Override
     public void reload() {
         try {
-            plugin.saveConfig();
             plugin.getConfig().load(plugin.getDataFolder() + "/config.yml");
+            plugin.saveConfig();
         } catch (IOException | InvalidConfigurationException e) {
             throw new RuntimeException(e);
         }

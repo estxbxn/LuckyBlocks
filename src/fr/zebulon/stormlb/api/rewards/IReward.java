@@ -1,6 +1,5 @@
 package fr.zebulon.stormlb.api.rewards;
 
-import fr.zebulon.stormlb.api.items.ICustomItem;
 import org.bukkit.entity.Player;
 
 import java.util.List;
@@ -15,11 +14,11 @@ public interface IReward {
     String getId();
 
     /**
-     * Gets reward item.
+     * Gets chance.
      *
-     * @return the reward item
+     * @return the chance
      */
-    ICustomItem getRewardItem();
+    int getChance();
 
     /**
      * Gets commands.

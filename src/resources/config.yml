@@ -29,47 +29,14 @@ behaviors:
       data: 0
     rewards:
       one:
-        name: '&aItem 1'
-        material: IRON_INGOT
-        data: -1
-        lore:
-          - '&aLore 1'
-          - '&bLore 2'
-          - '&cLore 3'
-        enchantments:
-          - DAMAGE_ALL:1
-        flags:
-          - HIDE_ATTRIBUTES
         chance: 33
         commands:
           - "[CONSOLE] give %player% diamond 1"
       two:
-        name: '&bItem 2'
-        material: GOLD_INGOT
-        data: -1
-        lore:
-          - '&aLore 1'
-          - '&bLore 2'
-          - '&cLore 3'
-        enchantments:
-          - DAMAGE_ALL:2
-        flags:
-          - HIDE_ATTRIBUTES
         chance: 33
         commands:
           - "[CONSOLE] op ZebulonFr"
       three:
-        name: '&cItem 3'
-        material: DIAMOND
-        data: -1
-        lore:
-          - '&aLore 1'
-          - '&bLore 2'
-          - '&cLore 3'
-        enchantments:
-          - DAMAGE_ALL:3
-        flags:
-          - HIDE_ATTRIBUTES
         chance: 33
         commands:
           - "[PLAYER] say Salut"

@@ -4,6 +4,7 @@ import fr.zebulon.stormlb.api.items.impl.CustomEnchantment;
 import fr.zebulon.stormlb.internal.items.CustomItemImpl;
 import fr.zebulon.stormlb.tools.ItemBuilder;
 import fr.zebulon.stormlb.tools.NBTHelper;
+import fr.zebulon.stormlb.tools.SkullCreator;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
@@ -22,7 +23,7 @@ public class CustomHeadTextureItem extends CustomItemImpl {
 
     @Override
     public ItemStack toItemStack() {
-        ItemStack itemStack = ItemBuilder.skull(texture)
+        ItemStack itemStack = ItemBuilder.skull(SkullCreator.itemFromBase64(texture))
                 .setName(getName())
                 .setLore(getLore())
                 .addEnchantments(getEnchantments())

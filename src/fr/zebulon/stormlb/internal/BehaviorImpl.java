@@ -10,7 +10,6 @@ import fr.zebulon.stormlb.api.rewards.IReward;
 import fr.zebulon.stormlb.api.rewards.impl.Reward;
 import fr.zebulon.stormlb.internal.blocks.types.CustomHeadBlock;
 import fr.zebulon.stormlb.internal.blocks.types.CustomHeadTextureBlock;
-import fr.zebulon.stormlb.internal.items.types.CustomRewardItem;
 import fr.zebulon.stormlb.tools.RandomCollections;
 import net.minecraft.server.v1_8_R3.BlockPosition;
 import net.minecraft.server.v1_8_R3.TileEntitySkull;
@@ -41,7 +40,7 @@ public class BehaviorImpl implements IBehavior {
 
         this.randomRewards = new RandomCollections<>();
         for (IReward reward : rewards) {
-            CustomRewardItem rewardItem = (CustomRewardItem) reward.getRewardItem();
+            Reward rewardItem = (Reward) reward;
             randomRewards.add(rewardItem.getChance(), reward);
         }
     }
@@ -84,11 +83,7 @@ public class BehaviorImpl implements IBehavior {
         Reward reward = (Reward) randomRewards.next();
         if (reward == null) return;
 
-        ICustomItem rewardItem = reward.getRewardItem();
-        if (rewardItem == null) return;
-
         location.getWorld().playSound(location, Sound.CHICKEN_EGG_POP, 1f, 1f);
-        location.getWorld().dropItem(location.clone().add(0, 1, 0), rewardItem.toItemStack());
         targetBlock.setType(Material.AIR);
 
         // Execute the reward commands
