@@ -43,7 +43,7 @@ public class Configuration implements IConfiguration {
         for (String behaviorId : behaviors.getKeys(false)) {
             ConfigurationSection behaviorSection = behaviors.getConfigurationSection(behaviorId);
             if (behaviorSection == null) continue;
-            System.out.println("Loading behavior " + behaviorId);
+            System.out.println("[StormLB] Loading behavior " + behaviorId);
 
             ICustomItem item = null;
             ICustomBlock block = null;
@@ -52,12 +52,9 @@ public class Configuration implements IConfiguration {
             for (String type : behaviorSection.getKeys(false)) {
                 ConfigurationSection behaviorTypeSection = behaviorSection.getConfigurationSection(type);
                 if (behaviorTypeSection == null) continue;
-                System.out.println("Loading behavior " + behaviorId + " of type " + type);
 
                 if (type.equalsIgnoreCase("item")) {
-                    System.out.println("ITEM CONFIG");
                     if (behaviorTypeSection.getString("type").equalsIgnoreCase("hdb")) {
-                        System.out.println("HDB CONFIG");
                         item = new CustomHeadItem(
                                 behaviorId,
                                 behaviorTypeSection.getString("name"),
@@ -67,7 +64,6 @@ public class Configuration implements IConfiguration {
                                 behaviorTypeSection.getString("hdb-id")
                         );
                     } else if (behaviorTypeSection.getString("type").equalsIgnoreCase("texture")) {
-                        System.out.println("HEADTEXTURE CONFIG");
                         item = new CustomHeadTextureItem(
                                 behaviorId,
                                 behaviorTypeSection.getString("name"),
@@ -77,7 +73,6 @@ public class Configuration implements IConfiguration {
                                 behaviorTypeSection.getString("value")
                         );
                     } else {
-                        System.out.println("ITEMIMPL CONFIG");
                         item = new CustomItemImpl(
                                 behaviorId,
                                 behaviorTypeSection.getString("name"),
@@ -90,9 +85,6 @@ public class Configuration implements IConfiguration {
                     }
                 }
                 if (type.equalsIgnoreCase("block")) {
-
-                    System.out.println("BLOCK CONFIG");
-
                     String blockType = behaviorTypeSection.getString("type");
                     if (blockType.equalsIgnoreCase("texture")) {
                         block = new CustomHeadTextureBlock(behaviorTypeSection.getString("value"));
@@ -106,16 +98,9 @@ public class Configuration implements IConfiguration {
                     }
                 }
                 if (type.equalsIgnoreCase("rewards")) {
-                    System.out.println("REWARDS CONFIG");
-
                     for (String rewardId : behaviorTypeSection.getKeys(false)) {
-
-                        System.out.println("REWARDS : " + rewardId);
-
                         ConfigurationSection rewardsSection = behaviorTypeSection.getConfigurationSection(rewardId);
                         if (rewardsSection == null) continue;
-
-                        System.out.println("REWARDS SECTION : " + rewardsSection);
 
                         IReward reward = new Reward(
                                 rewardId,
@@ -131,12 +116,6 @@ public class Configuration implements IConfiguration {
                                 ),
                                 rewardsSection.getStringList("commands")
                         );
-
-                        System.out.println("Reward{" +
-                                "id='" + reward.getId() +
-                                ", item=" + reward.getRewardItem() +
-                                ", commands=" + reward.getCommands() +
-                                '}');
 
                         rewards.add(reward);
                     }

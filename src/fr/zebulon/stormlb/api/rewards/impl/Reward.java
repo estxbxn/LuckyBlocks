@@ -23,7 +23,6 @@ public class Reward implements IReward {
     public void executeCommands(Player player, List<String> commands) {
         for (String command : commands) {
             command = command.replace("%player%", player.getName()).replace("%item%", item.getId()).replace("%command%", command);
-            Bukkit.broadcastMessage("§e" + command);
 
             // Command start with [PLAYER] the command will be executed by the player
             if (command.startsWith("[PLAYER]")) {

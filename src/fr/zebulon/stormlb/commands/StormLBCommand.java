@@ -32,15 +32,12 @@ public class StormLBCommand implements CommandExecutor {
 
             BehaviorImpl behavior = plugin.getBehaviorManager().getBehavior("rare");
             if (behavior == null) return false;
-            Bukkit.broadcastMessage(behavior.getId());
 
             ICustomItem item = behavior.getItem();
             if (item == null) return false;
-            Bukkit.broadcastMessage(item.getName());
 
             ItemStack itemStack = item.toItemStack();
             if (itemStack == null) return false;
-            Bukkit.broadcastMessage(itemStack.toString());
 
             player.getInventory().addItem(itemStack);
             return true;
