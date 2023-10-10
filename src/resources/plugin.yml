@@ -3,6 +3,8 @@ authors: [ Zebulon ]
 website: https://github.com/estxbxn/
 main: fr.zebulon.stormlb.StormPlugin
 version: 1.0.0-ALPHA
+depend:
+  - HeadDatabase
 commands:
   stormlb:
     description: The main command of StormLuckyBlocks
