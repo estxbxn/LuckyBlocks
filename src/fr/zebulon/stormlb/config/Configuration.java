@@ -3,9 +3,10 @@ package fr.zebulon.stormlb.config;
 import fr.zebulon.stormlb.StormPlugin;
 import fr.zebulon.stormlb.api.blocks.ICustomBlock;
 import fr.zebulon.stormlb.api.config.IConfiguration;
-import fr.zebulon.stormlb.api.items.CustomEnchantment;
 import fr.zebulon.stormlb.api.items.ICustomItem;
+import fr.zebulon.stormlb.api.items.impl.CustomEnchantment;
 import fr.zebulon.stormlb.api.rewards.IReward;
+import fr.zebulon.stormlb.api.rewards.impl.Reward;
 import fr.zebulon.stormlb.internal.BehaviorImpl;
 import fr.zebulon.stormlb.internal.blocks.CustomBlockImpl;
 import fr.zebulon.stormlb.internal.blocks.types.CustomHeadBlock;
@@ -116,15 +117,9 @@ public class Configuration implements IConfiguration {
 
                         System.out.println("REWARDS SECTION : " + rewardsSection);
 
-                        IReward reward = new IReward() {
-                            @Override
-                            public String getId() {
-                                return rewardId;
-                            }
-
-                            @Override
-                            public ICustomItem getRewardItem() {
-                                return new CustomRewardItem(
+                        IReward reward = new Reward(
+                                rewardId,
+                                new CustomRewardItem(
                                         behaviorId,
                                         rewardsSection.getString("name"),
                                         Material.valueOf(rewardsSection.getString("material")),
@@ -133,9 +128,16 @@ public class Configuration implements IConfiguration {
                                         fromTypeEnchantments(rewardsSection.getStringList("enchantments")),
                                         fromTypeFlags(rewardsSection.getStringList("flags")),
                                         rewardsSection.getInt("chance")
-                                );
-                            }
-                        };
+                                ),
+                                rewardsSection.getStringList("commands")
+                        );
+
+                        System.out.println("Reward{" +
+                                "id='" + reward.getId() +
+                                ", item=" + reward.getRewardItem() +
+                                ", commands=" + reward.getCommands() +
+                                '}');
+
                         rewards.add(reward);
                     }
                 }
@@ -161,7 +163,7 @@ public class Configuration implements IConfiguration {
         for (String enchantmentId : enchantmentsList) {
             String[] enchantment = enchantmentId.split(":");
             Enchantment enchant = Enchantment.getByName(enchantment[0]);
-            int level = enchantment[1].isEmpty() ? 1 : Integer.parseInt(enchantment[1]);
+            int level = enchantment[1].isEmpty() ? 0 : Integer.parseInt(enchantment[1]);
 
             CustomEnchantment customEnchantment = new CustomEnchantment(
                     enchant,
@@ -185,19 +187,13 @@ public class Configuration implements IConfiguration {
     @Override
     public void reload() {
         try {
-            plugin.getConfig().load(plugin.getDataFolder() + "/1config.yml");
+            plugin.saveConfig();
+            plugin.getConfig().load(plugin.getDataFolder() + "/config.yml");
         } catch (IOException | InvalidConfigurationException e) {
             throw new RuntimeException(e);
         }
 
-        plugin.saveConfig();
         loadConfiguration();
         System.out.println("[StormLB] Configuration reloaded successfully");
-    }
-
-    @Override
-    public void save() {
-        plugin.saveConfig();
-        System.out.println("[StormLB] Configuration saved successfully");
     }
 }

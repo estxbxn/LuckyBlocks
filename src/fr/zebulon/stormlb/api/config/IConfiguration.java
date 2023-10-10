@@ -11,9 +11,4 @@ public interface IConfiguration {
      * Reload.
      */
     void reload();
-
-    /**
-     * Save.
-     */
-    void save();
 }

@@ -6,11 +6,14 @@ import fr.zebulon.stormlb.commands.StormLBCommand;
 import fr.zebulon.stormlb.config.Configuration;
 import fr.zebulon.stormlb.listener.BehaviorListener;
 import fr.zebulon.stormlb.manager.BehaviorManagerImpl;
+import me.arcaniax.hdb.api.HeadDatabaseAPI;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class StormPlugin extends JavaPlugin implements IStormPlugin {
 
     private static StormPlugin instance;
+    private static HeadDatabaseAPI hdbAPI;
+
     private Configuration configuration;
     private IBehaviorManager behaviorManager;
     private BehaviorListener behaviorListener;
@@ -18,6 +21,7 @@ public class StormPlugin extends JavaPlugin implements IStormPlugin {
     @Override
     public void onEnable() {
         instance = this;
+        hdbAPI = new HeadDatabaseAPI();
 
         // Managers
         this.behaviorManager = new BehaviorManagerImpl(this);
@@ -48,6 +52,10 @@ public class StormPlugin extends JavaPlugin implements IStormPlugin {
 
     public static StormPlugin get() {
         return instance;
+    }
+
+    public static HeadDatabaseAPI getHdbAPI() {
+        return hdbAPI;
     }
 
     public Configuration getConfiguration() {

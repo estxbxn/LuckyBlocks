@@ -1,4 +1,4 @@
-package fr.zebulon.stormlb.api.items;
+package fr.zebulon.stormlb.api.items.impl;
 
 import org.bukkit.enchantments.Enchantment;
 

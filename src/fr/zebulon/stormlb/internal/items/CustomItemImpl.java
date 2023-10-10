@@ -1,6 +1,6 @@
 package fr.zebulon.stormlb.internal.items;
 
-import fr.zebulon.stormlb.api.items.CustomEnchantment;
+import fr.zebulon.stormlb.api.items.impl.CustomEnchantment;
 import fr.zebulon.stormlb.api.items.ICustomItem;
 import fr.zebulon.stormlb.tools.ItemBuilder;
 import fr.zebulon.stormlb.tools.NBTHelper;

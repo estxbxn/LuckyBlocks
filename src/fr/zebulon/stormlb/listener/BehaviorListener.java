@@ -48,11 +48,14 @@ public class BehaviorListener implements Listener {
         plugin.getBehaviorManager().getCustomBlocksCache().put(blockPos, behavior);
         behavior.placeBehavior(player, itemInHand, targetBlock, location);
 
-        // TODO : Save dans un fichier temporaire "placedLuckyBlocks.yml" en cas de crash
+        // TODO : Save dans un fichier temporaire "placedBehaviors.yml" en cas de crash
     }
 
     @EventHandler
     public void onBehaviorBreak(BlockBreakEvent event) {
+        Player player = event.getPlayer();
+        if (player == null) return;
+
         Block targetBlock = event.getBlock();
         if (targetBlock == null) return;
 
@@ -67,9 +70,9 @@ public class BehaviorListener implements Listener {
         if (behavior == null) return;
 
         plugin.getBehaviorManager().getCustomBlocksCache().remove(blockPos);
-        behavior.breakBehavior(targetBlock, location);
+        behavior.breakBehavior(player, targetBlock, location);
 
-        // TODO : Remove dans le fichier temporaire "placedLuckyBlocks.yml" en cas de crash
+        // TODO : Remove dans le fichier temporaire "placedBehaviors.yml" en cas de crash
     }
 
     private final Inventory menu = Bukkit.createInventory(null, 54, "Menu");

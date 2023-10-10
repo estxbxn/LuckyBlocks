@@ -1,7 +1,9 @@
 package fr.zebulon.stormlb.internal.blocks;
 
 import fr.zebulon.stormlb.api.blocks.ICustomBlock;
+import fr.zebulon.stormlb.tools.ItemBuilder;
 import org.bukkit.Material;
+import org.bukkit.inventory.ItemStack;
 
 public class CustomBlockImpl implements ICustomBlock {
 
@@ -21,5 +23,10 @@ public class CustomBlockImpl implements ICustomBlock {
     @Override
     public byte getData() {
         return data;
+    }
+
+    @Override
+    public ItemStack toItemStack() {
+        return ItemBuilder.item(material, 1, data).build();
     }
 }

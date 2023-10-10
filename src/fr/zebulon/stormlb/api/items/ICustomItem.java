@@ -1,5 +1,6 @@
 package fr.zebulon.stormlb.api.items;
 
+import fr.zebulon.stormlb.api.items.impl.CustomEnchantment;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;

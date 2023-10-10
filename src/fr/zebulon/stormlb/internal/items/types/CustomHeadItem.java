@@ -1,11 +1,11 @@
 package fr.zebulon.stormlb.internal.items.types;
 
-import fr.zebulon.stormlb.api.items.CustomEnchantment;
-import fr.zebulon.stormlb.tools.ItemBuilder;
+import fr.zebulon.stormlb.StormPlugin;
+import fr.zebulon.stormlb.api.items.impl.CustomEnchantment;
 import fr.zebulon.stormlb.internal.items.CustomItemImpl;
+import fr.zebulon.stormlb.tools.ItemBuilder;
 import fr.zebulon.stormlb.tools.NBTHelper;
 import org.bukkit.Material;
-import org.bukkit.entity.Item;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 
@@ -23,7 +23,11 @@ public class CustomHeadItem extends CustomItemImpl {
 
     @Override
     public ItemStack toItemStack() {
-        ItemStack itemStack = ItemBuilder.skull(headId)
+        ItemStack itemStack = ItemBuilder.item(StormPlugin.getHdbAPI().getItemHead(headId))
+                .setName(getName())
+                .setLore(getLore())
+                .addEnchantments(getEnchantments())
+                .addItemFlags(getFlags())
                 .build();
 
         return NBTHelper.setStringInNBTTag(itemStack, "id", getId());

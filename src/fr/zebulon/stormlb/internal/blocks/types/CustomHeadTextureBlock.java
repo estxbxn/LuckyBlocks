@@ -1,7 +1,9 @@
 package fr.zebulon.stormlb.internal.blocks.types;
 
 import fr.zebulon.stormlb.internal.blocks.CustomBlockImpl;
+import fr.zebulon.stormlb.tools.ItemBuilder;
 import org.bukkit.Material;
+import org.bukkit.inventory.ItemStack;
 
 public class CustomHeadTextureBlock extends CustomBlockImpl {
 
@@ -15,5 +17,10 @@ public class CustomHeadTextureBlock extends CustomBlockImpl {
 
     public String getValue() {
         return value;
+    }
+
+    @Override
+    public ItemStack toItemStack() {
+        return ItemBuilder.skull(value).build();
     }
 }

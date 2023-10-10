@@ -25,10 +25,11 @@ public interface IBehavior {
     /**
      * Break behavior.
      *
+     * @param player      the player
      * @param targetBlock the target block
      * @param location    the location
      */
-    void breakBehavior(Block targetBlock, Location location);
+    void breakBehavior(Player player, Block targetBlock, Location location);
 
     /**
      * Gets id.

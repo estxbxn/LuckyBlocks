@@ -3,7 +3,7 @@ package fr.zebulon.stormlb.tools;
 import com.google.gson.JsonParser;
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
-import fr.zebulon.stormlb.api.items.CustomEnchantment;
+import fr.zebulon.stormlb.api.items.impl.CustomEnchantment;
 import org.apache.commons.codec.binary.Base64;
 import org.bukkit.*;
 import org.bukkit.block.banner.Pattern;
