@@ -18,19 +18,14 @@ public class RandomCollections<E> {
         this.random = random;
     }
 
-    public RandomCollections<E> add(double weight, E result) {
-        if (weight <= 0) return this;
+    public void add(double weight, E result) {
+        if (weight <= 0) return;
         total += weight;
         map.put(total, result);
-        return this;
     }
 
     public E next() {
         double value = random.nextDouble() * total;
         return map.higherEntry(value).getValue();
-    }
-
-    public void clear() {
-        map.clear();
     }
 }
